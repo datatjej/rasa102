@@ -1,0 +1,84 @@
+forms:
+  - booking_form
+
+slots:
+  from:
+    type: unfeaturized
+  to:
+    type: unfeaturized
+  date:
+    type: unfeaturized
+  meal:
+    type: unfeaturized
+  oneway:
+    type: unfeaturized
+  return:
+    type: unfeaturized
+  confirm_returntrip:
+    type: unfeaturized
+  confirm_onewaytrip:
+    type: unfeaturized
+  requested_slot:
+    type: unfeaturized 
+
+intents:
+  - greet
+  - affirm
+  - deny
+  - request_booking:
+      use_entities: []
+  - inform
+
+entities:
+  - from
+  - to
+  - date
+  - meal
+  - return
+
+actions:
+  - utter_greet
+  - utter_ask_cinfirm_onewaytrip
+  - utter_ask_confirm_returntrip
+  - utter_ask_from
+  - utter_ask_to
+  - utter_ask_date
+  - utter_ask_meal
+  - utter_ask_oneway
+  - utter_ask_return
+  - utter_default
+  - utter_submit
+  
+templates:
+  utter_greet:
+  - text: "Welcome to the flight booking service."
+
+  utter_default:
+  - text: "Sorry, I didn't understand that."
+
+  utter_submit:
+  - text: "Your flight has been booked."
+
+  utter_wrong_to:
+  - text: "The destination cannot be the same as the city of departure."
+
+  utter_ask_from:
+    - text: "What city are you leaving from?"
+  utter_ask_to:
+    - text: "Where are you going?"
+  utter_ask_date:
+    - text: "What date to you want to leave?"
+  utter_ask_meal:
+    - text: "Do you want a vegan or vegetarian meal?"
+  utter_ask_oneway:
+    - text: "Is it a one-way trip?"
+  utter_ask_return:
+    - text: "What date do you want to return?"
+  utter_ask_confirm_returntrip:
+    - text: "Do you want to go from {from} to {to} on {date} returning on {return}?"
+  utter_ask_confirm_onewaytrip:
+    - text: "Do you want to go from {from} to {to} on {date}?"
+
+session_config:
+  session_expiration_time: 60
+  carry_over_slots_to_new_session: false
